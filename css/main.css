@@ -4,8 +4,8 @@
 }
 
 p{
-	font-family: Arial, sans-serif;
-	font-style: normal;
+    font-family: Arial, sans-serif;
+    font-style: normal;
     font-variant: normal;
     font-weight: normal;
     font-stretch: normal;
@@ -24,18 +24,18 @@ li {
 }
 
 h1 {
-	font-family: 'Open Sans Condensed', sans-serif;
-	font-size: 3.7em;
-	color: #e96d1a;
+    font-family: 'Open Sans Condensed', sans-serif;
+    font-size: 3.7em;
+    color: #e96d1a;
 }
 h2 {
-	font-family: 'Open Sans Condensed', sans-serif;
-	font-size: 2em;
-	color: #e96d1a;
+    font-family: 'Open Sans Condensed', sans-serif;
+    font-size: 2em;
+    color: #e96d1a;
 }
 a {
-	color: #0a8abf;
-	text-decoration: none;
+    color: #0a8abf;
+    text-decoration: none;
 }
 a:hover {
 	color: #e96d1a;
@@ -47,61 +47,55 @@ a:hover {
 	margin: 0 auto;
 }
 .header {
-	position: relative;
-	background: #6bcef7; /* Для старых браузров */
+    position: relative;
+    background: #6bcef7; /* Для старых браузров */
     background: linear-gradient(to bottom, #6bcef7, #ffffff);
-	width: 100%;
-	height: 355px;
+    width: 100%;
+    height: 355px;
 }
-.content {
-	position: relative;
-	padding: 15px;
-	max-width: 960px;
-	min-width: 450px;
-	margin: 15px auto;
-}
-.footer {
-	position: relative;
-	background: #6bcef7; /* Для старых браузров */
+
+#footer {
+    position: relative;
+    background: #6bcef7; /* Для старых браузров */
     background: linear-gradient(to top, #6bcef7, #ffffff);
-	width: 100%;
-	height: 215px;
+    width: 100%;
+    height: 215px;
 }
 .logo-znatok {
-	position: relative;
-	width: 121px;
-	height: 100px;
-	margin: 0 auto;
-	background-image: URL(../img/logo-znatok.png);
-	background-repeat: no-repeat;
-	background-position: center;
+    position: relative;
+    width: 121px;
+    height: 100px;
+    margin: 0 auto;
+    background-image: URL(../img/logo-znatok.png);
+    background-repeat: no-repeat;
+    background-position: center;
 }
 .contacts {
-	position: relative;
-	text-align: center;
-	width: 400px;
-	margin: 0 auto;
+    position: relative;
+    text-align: center;
+    width: 400px;
+    margin: 0 auto;
 }
 
 .logo-wrap {
-	width: 363px;
-	margin: 0 auto;
-	padding-top: 5px;
-	padding-bottom: 5px;
+    width: 363px;
+    margin: 0 auto;
+    padding-top: 5px;
+    padding-bottom: 5px;
 }
 
 .logo {
-	position: relative;
-	width: 363px;
-	height: 200px;
-	margin: 0 auto;
-	background-image: URL(../img/logo.png);
-	background-repeat: no-repeat;
-	background-position: center;
+    position: relative;
+    width: 363px;
+    height: 200px;
+    margin: 0 auto;
+    background-image: URL(../img/logo.png);
+    background-repeat: no-repeat;
+    background-position: center;
 }
 .logo a{
-	display: block;
-	height: 100%;
+    display: block;
+    height: 100%;
 }
 
 .site-name {
@@ -182,11 +176,71 @@ a:hover {
 	clear: both;
 }
 
+/*Стили для контент области*/
+
+#container-outer {
+    display: table;
+    width: 100%;
+    box-sizing: border-box;  /* не поддерживается в CSS2 */
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 10px;
+}
+#container-outer > div,
+#container-outer > noindex > div {
+    display: table-cell;
+    position: relative;
+    vertical-align: top;
+    width: auto;
+    box-sizing: border-box;  /* не поддерживается в CSS2 */
+}
+
+#container-outer > #content,
+#container-outer > noindex > #content {
+    max-width: 960px;
+    min-width: 450px;
+    overflow: hidden;
+    padding-top: 5px;
+}
+
+.articles {
+    position: relative;
+    display: block;
+    max-width: 960px;
+    margin: 0 auto;
+}
+
 /*Стили для меню*/
-.menu{
-	position: absolute;
-	top: 150px;
-	left: -75px;
+#container-outer > #sidebar,
+#container-outer > noindex > #sidebar {
+    width: 200px;
+    border-right: 1px solid #d5d2d0;
+    border-top: 1px solid #d5d2d0;
+    border-bottom: 1px solid #d5d2d0;
+}
+#sidebar_toggle {
+    position: absolute;
+    background-image: URL(../img/ico/menu.png);
+    display: block;
+    top: 12px;
+    margin-left: 19px;
+    left: 100%;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    z-index: 5;
+}
+#sidebar_toggle:hover {
+    background-color: #e4e4e4;
+    cursor: pointer;    
+}
+#sidebar_inner{
+    display: block;
+    overflow: auto;
+    margin: 10px auto;
+    width: 180px;
+    padding-left: 10px;
+    padding-right: 10px;
 }
 
 /*********/
@@ -196,6 +250,7 @@ a:hover {
 	position:relative;
 	border-radius: 10px 10px 10px 10px;
 	padding: 5px;
+        min-height: 200px;
 }
 .list-logo {
 	position: relative;

@@ -4,22 +4,52 @@
 	<meta charset="utf-8">
 	<link href="css/reset.css" media="screen" rel="stylesheet" type="text/css">
 	<link href="css/main.css" media="screen" rel="stylesheet" type="text/css">
-	<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
-	<title>Шаблон главной страницы</title>
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300&subset=latin,cyrillic" rel="stylesheet" type="text/css">
+	<script src="js/jquery-2.2.0.min.js"></script>
+        <script src="js/jquery.cookie.js"></script>
+        <script src="js/menu.js"></script>
+        <title>Шаблон главной страницы</title>
 </head>
 <body>
 	<div class="wrapper">
-		<div class="header">
-			<div class="logo-wrap">
-				<div class="logo"><a href="/" title="Главная страница ИК Знаток"></a></div>
-				<div class="site-name"><h1>ОНЛАЙН ЗАНЯТИЯ</h1></div>
-				<div class="site-description"><p>
-                                    <?php if(!$this->page_title): ?>
-                                        для дошкольников и школьников
-                                    <?php else: ?>
-                                        <?php echo $this->page_title; ?>
-                                    <?php endif; ?>
-                                    </p></div>
-			</div>
-		</div>
-		<div class="content">
+            <div class="header">
+                <div class="logo-wrap">
+                        <div class="logo"><a href="/" title="Главная страница ИК Знаток"></a></div>
+                        <div class="site-name"><h1>ОНЛАЙН ЗАНЯТИЯ</h1></div>
+                        <div class="site-description"><p>
+                            <?php if(!$this->page_title): ?>
+                                для дошкольников и школьников
+                            <?php else: ?>
+                                <?php echo $this->page_title; ?>
+                            <?php endif; ?>
+                            </p></div>
+                </div>
+            </div>
+            <div id="container-outer">
+                    <div id="sidebar" class="on" 
+                        <?php if(isset($_COOKIE['sidebar']) && 'off' == $_COOKIE['sidebar']):?>
+                         style="width: 0px;"
+                        <?php endif; ?>
+                         >
+                        <div id="menu">
+                            <div id="sidebar_toggle"></div>
+                            <div id="sidebar_inner"
+                                <?php if(isset($_COOKIE['sidebar']) && 'off' == $_COOKIE['sidebar']):?>
+                                    style="margin-left: -200px;"
+                                <?php endif; ?>
+                                 >
+                                <ul>
+                                    <li><a href="#">Пункт 1</a></li>
+                                    <li><a href="#">Пункт 2</a></li>
+                                    <li><a href="#">Пункт 3</a></li>
+                                    <li><a href="#">Пункт 4</a></li>
+                                    <li><a href="#">Пункт 5</a></li>
+                                    <li><a href="#">Пункт 6</a></li>
+                                    <li><a href="#">Пункт 7</a></li>
+                                    
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="content">
+                        <div class="articles">
