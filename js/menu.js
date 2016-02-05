@@ -6,7 +6,7 @@ $( document ).ready(function() {
             if($('div#sidebar').attr('class')==='on'){
                 $('div#sidebar_inner').animate({"margin-left": '-=200'}, 'slow');
                 $('div#sidebar').toggleClass('on');
-                $('div#sidebar').animate({width:'0px'}, 'slow');
+                $('div#sidebar').animate({width:'0px', overflow:'visible'}, 'slow');
                 displaySideBar('off');
             }else{
                 $('div#sidebar').animate({width:'200px'},"slow");
