@@ -1,5 +1,5 @@
 <?php $course = $this->course; ?>
-<form id="course" enctype="multipart/form-data" action="/?ctrl=Admin&act=Courses&task=edit&id=<?php echo $course->course_id; ?>" method="post">
+<form id="course" enctype="multipart/form-data" action="/?ctrl=admin&act=courses&task=edit&id=<?php echo $course->course_id; ?>" method="post">
     <input type="text" name="course_name" value="<?php echo $course->course_name; ?>"><label for="course_name">Название</label><br />
     <select name="course_parent_id">
         <option value="0">Корневая категория</option>

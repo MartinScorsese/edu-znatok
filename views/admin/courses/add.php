@@ -1,4 +1,4 @@
-<form id="course" enctype="multipart/form-data" action="/?ctrl=Admin&act=Courses&task=add" method="post">
+<form id="course" enctype="multipart/form-data" action="/?ctrl=admin&act=courses&task=add" method="post">
     <input type="text" name="course_name"><label for="course_name">Название</label><br />
     <select name="course_parent_id">
         <option value="0">Без категории</option>

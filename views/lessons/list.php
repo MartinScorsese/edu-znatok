@@ -2,7 +2,7 @@
 <?php foreach ($this->lessons as $lesson): ?>
     <ul class="lesson-list">
             <li class="lesson_number"><?php echo $lesson_number++; ?>.</li>
-            <li class="lesson_name"><a href="/?ctrl=Lessons&act=Lesson&lesson_id=<?php echo $lesson->lesson_id; ?>" title="<?php echo $lesson->lesson_name; ?>"><?php echo $lesson->lesson_name; ?></a></li>
+            <li class="lesson_name"><a href="/?ctrl=lessons&act=lesson&lesson_id=<?php echo $lesson->lesson_id; ?>" title="<?php echo $lesson->lesson_name; ?>"><?php echo $lesson->lesson_name; ?></a></li>
             <li class="lesson_status green"><?php echo $lesson->lesson_progress; ?>%</li>
             <li class="leson_comments">Комментариев: нет</li>
     </ul>
