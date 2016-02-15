@@ -25,6 +25,13 @@ class DB
         return $sth->fetchAll(PDO::FETCH_CLASS, $this->className);
     }
     /*
+     * Выполняет запрос и возвращает true или false
+     */
+    public function execute($sql, $params=[]){
+        $sth = $this->dbh->prepare($sql);
+        return $sth->execute($params);
+    }
+    /*
      * Возвращает ID последней добавленной записи
      */
     public function insert($sql, $params=[]){
