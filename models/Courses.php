@@ -1,12 +1,8 @@
 <?php
 class Courses extends AbstractModel {
     
-    public $course_id;
-    public $course_parent_id;
-    public $course_name;
-    public $course_description;
-    public $course_img;
-    
+    public static $table = 'courses';
+    public static $class = 'Courses';
     
     public function getCourses(){
         
@@ -19,49 +15,25 @@ class Courses extends AbstractModel {
     public function getParentCourses($id=0){
         
         $db = new DB;
-        $query = "SELECT * FROM courses WHERE course_parent_id=". $id;
-        $date = $db->query($query);
+        $db->setClassName(self::$class);
+        $date = $db->query("SELECT * FROM courses WHERE parent_id=:id", ['id' => $id]);
         return $date;       
     }
     
     public function getCourse($id){    
         $db = new DB;
-        $query = "SELECT * FROM courses WHERE course_id=" . $id;
+        $query = "SELECT * FROM courses WHERE id=" . $id;
         $date = $db->query($query);
         return $date[0];       
     }
     
     public function delCourse($id){    
         $db = new DB;
-        $query = "DELETE FROM courses WHERE course_id=" . $id;
+        $query = "DELETE FROM courses WHERE id=" . $id;
         $date = $db->query($query);
         return $date[0];       
     }
     
-    public function addCourses(){
-        
-        $id = $_POST['id'];
-        $parent_id = $_POST['course_parent_id'];
-        $name = $_POST['course_name'];
-        $description = $_POST['course_description'];
-        $img = Files::upload($_FILES, 'courses');
-        
-        $db = new DB;
-        
-        $query = "INSERT INTO courses (course_id, "
-                . "course_parent_id, "
-                . "course_name, "
-                . "course_description, "
-                . "course_img) VALUES('"
-                . $id ."', '"
-                . $parent_id ."', '"
-                . $name ."', '"
-                . $description ."', '"
-                . $img ."')";
-        
-        $data = $db->insert($query);
-        return $data;      
-    }
     
     public function updateCourse($post){
         

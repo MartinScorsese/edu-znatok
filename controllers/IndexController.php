@@ -15,4 +15,11 @@ class IndexController
         $view->display('footer.php');
 
     }
+    
+    public function actionTest(){
+        $course = Courses::findOneByColumn('course_name', 'Программирование для детей');
+        $course->course_name = 'Программирование для взрослых';
+        $course->save();
+        var_dump($course);die;
+    }
 }

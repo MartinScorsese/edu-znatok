@@ -30,7 +30,7 @@ class AdminController
         
         if (!isset($task)){
             
-            $courses = Courses::getCourses();
+            $courses = Courses::getAll();
             $view->courses = $courses;
             
             $view->display('admin/header.php');

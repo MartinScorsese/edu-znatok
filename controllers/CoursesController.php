@@ -5,13 +5,13 @@ class CoursesController
         
         $id = $_GET['id'];
         
-        $courses = Courses::getParentCourses($id);
+        $courses = Courses::findAllByColumn('parent_id', $id);
         $view = new View();
         $view->courses = $courses;
       //  $view->user_login = $user->user_login;
        // $view->user_group = $user->user_group;
-        $parent_course = Courses::getCourse($id);
-        $view->page_title = $parent_course->course_name;
+        $parent_course = Courses::findOneByPK($id);
+        $view->page_title = $parent_course->name;
         
         $view->display('header.php');
         if(isset($id)){

@@ -1,11 +1,11 @@
 <?php foreach ($this->courses as $course):?>   
         <div class="list">
             <div class="list-logo">
-                <a href="/?ctrl=lessons&act=show&course_id=<?php echo $course->course_id ?>"><img src="<?php echo $course->course_img; ?>"></a>
+                <a href="/?ctrl=lessons&act=show&course_id=<?php echo $course->id ?>"><img src="<?php echo $course->img; ?>"></a>
             </div>
             <div class="list-description">
-                <h2><?php echo $course->course_name ?></h2>
-                <?php echo $course->course_description ?>
+                <h2><?php echo $course->name ?></h2>
+                <?php echo $course->description ?>
             </div>
         </div>
     <?php endforeach; ?>

@@ -2,19 +2,19 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<link href="css/reset.css" media="screen" rel="stylesheet" type="text/css">
-	<link href="css/main.css" media="screen" rel="stylesheet" type="text/css">
+	<link href="<?=BASE_PATH ?>css/reset.css" media="screen" rel="stylesheet" type="text/css">
+	<link href="<?=BASE_PATH ?>css/main.css" media="screen" rel="stylesheet" type="text/css">
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300&subset=latin,cyrillic" rel="stylesheet" type="text/css">
-	<script src="js/jquery-2.2.0.min.js"></script>
-        <script src="js/jquery.cookie.js"></script>
-        <script src="js/menu.js"></script>
+	<script src="<?=BASE_PATH ?>js/jquery-2.2.0.min.js"></script>
+        <script src="<?=BASE_PATH ?>js/jquery.cookie.js"></script>
+        <script src="<?=BASE_PATH ?>js/menu.js"></script>
         <title>Шаблон главной страницы</title>
 </head>
 <body>
 	<div class="wrapper">
             <div class="header">
                 <div class="logo-wrap">
-                        <div class="logo"><a href="/" title="Главная страница ИК Знаток"></a></div>
+                        <div class="logo"><a href="<?=BASE_PATH ?>" title="Главная страница ИК Знаток"></a></div>
                         <div class="site-name"><h1>ОНЛАЙН ЗАНЯТИЯ</h1></div>
                         <div class="site-description"><p>
                             <?php if(!$this->page_title): ?>
