@@ -94,4 +94,10 @@ abstract class AbstractModel {
         $db = New DB();
         $db->query($query, $data);
     }
+    
+    public function delete(){
+        $query = "DELETE FROM " . static::$table . " WHERE id=:id";
+        $db = New DB();
+        $db->execute($query, [':id' => $this->id]);
+    }
 }

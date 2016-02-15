@@ -11,11 +11,11 @@ class LessonsController
         
         if(isset($course_id)){
             
-            $lessons = Lessons::getLessons($course_id);
-            $course = Courses::getCourse($course_id);
+            $lessons = Lessons::findOneByColumn('parent_id', $course_id);
+            $course = Courses::findOneByPK($course_id);
             
             $view->lessons = $lessons;
-            $view->page_title = $course->course_name;
+            $view->page_title = $course->name;
             
             $view->display('header.php');
             $view->display('lessons/list.php');

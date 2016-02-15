@@ -3,7 +3,7 @@ class IndexController
 {
     public function actionShow(){ 
         
-        $courses = Courses::getParentCourses();
+        $courses = Courses::findAllByColumn('parent_id', 0);
         $view = new View();
         $view->courses = $courses;
         
@@ -17,9 +17,8 @@ class IndexController
     }
     
     public function actionTest(){
-        $course = Courses::findOneByPK(8);
-        $course->name = 'То самое чувство';
-        //$course->update();
+        $course = Courses::findOneByPK(11);
+        $course->delete();
         var_dump($course);die;
     }
 }
