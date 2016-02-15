@@ -17,12 +17,9 @@ class IndexController
     }
     
     public function actionTest(){
-        $course = new Courses;
-        $course->name = 'Программирование для взрослых';
-        $course->description = 'фулюганьё сплошное';
-        $course->parent_id = '8';
-        
-        $course->insert();
+        $course = Courses::findOneByPK(8);
+        $course->name = 'То самое чувство';
+        //$course->update();
         var_dump($course);die;
     }
 }

@@ -15,7 +15,7 @@ class Files
             move_uploaded_file($file['course_img']['tmp_name'], $uploaddir . $file['course_img']['name']);
         }
         
-        return $img = '/img/courses/' . $file['course_img']['name'];
+        return $img = 'img/courses/' . $file['course_img']['name'];
         
     }
     

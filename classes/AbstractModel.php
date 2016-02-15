@@ -83,22 +83,14 @@ abstract class AbstractModel {
         $data =[];
         foreach ($this->data as $k => $v){
             $data[':' . $k] = $v;
-            /* По хорошему мы должны исключить столбец ID по имени
-                if ('course_id' == $k){
-                    continue;
-                } 
-            */
+            if ('id' == $k){
+                continue;
+            } 
             $cols[] = $k . '=:' . $k;
         }
-        /*
-        *Будем жульничать
-         *Договариваемся о том, что ПЕРВЫЙ столбец всегда ключевой
-         *и исходя из этой договоренности делаем следующие вычисления  
-        */
-        $id = array_shift($cols);
         echo $query = "UPDATE " . static::$table . " "
                 . "SET " . implode(', ', $cols) . " "
-                . "WHERE " . $id;
+                . "WHERE id=:id";
         $db = New DB();
         $db->query($query, $data);
     }
