@@ -72,10 +72,10 @@ abstract class AbstractModel {
                 . static::$table . " "
                 . "(" . implode(', ', $cols) .") "
                 . "VALUES "
-                . "(" . array_keys($data) . ")";
+                . "(" . implode(', ', array_keys($data)) . ")";
         
         $db = New DB();
-        $this->id = $db->insert($query);
+        $this->id = $db->insert($query, $data);
     }
     
     public function update(){

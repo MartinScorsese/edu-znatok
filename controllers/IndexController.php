@@ -17,9 +17,12 @@ class IndexController
     }
     
     public function actionTest(){
-        $course = Courses::findOneByColumn('course_name', 'Программирование для детей');
-        $course->course_name = 'Программирование для взрослых';
-        $course->save();
+        $course = new Courses;
+        $course->name = 'Программирование для взрослых';
+        $course->description = 'фулюганьё сплошное';
+        $course->parent_id = '8';
+        
+        $course->insert();
         var_dump($course);die;
     }
 }
