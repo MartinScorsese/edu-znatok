@@ -88,7 +88,7 @@ abstract class AbstractModel {
             } 
             $cols[] = $k . '=:' . $k;
         }
-        echo $query = "UPDATE " . static::$table . " "
+       $query = "UPDATE " . static::$table . " "
                 . "SET " . implode(', ', $cols) . " "
                 . "WHERE id=:id";
         $db = New DB();
