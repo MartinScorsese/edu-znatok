@@ -1,64 +1,29 @@
 <?php
+/**
+ * @property $user_id,
+ * @property $user_email,
+ * @property $user_password,
+ * @property $user_hash,
+ * @property $user_status,
+ * @property $user_name,
+ * @property $user_images,
+ * @property $user_patronymic,
+ * @property $user_surname,
+ * @property $user_birthday,
+ * @property $user_location,
+ * @property $user_family_status,
+ * @property $user_education,
+ * @property $user_experience,
+ * @property $user_phone,
+ * @property $user_skype,
+ * @property $user_additional;
+ */
 class Users extends AbstractModel {
-    /* Списки для выбора заданных значений в полях "Образование" и "Семейный статус"
-    *  Размешены в классе пользователя, чтобы не плодить сущности в рамках тестового
-    *  задания;
-    *  Так-же не разделены классы "Пользователь" и "Авторизация".
-    */
-     
-    
+
     static protected $table = 'users';
     static protected $sessions_table = 'sessions';
-
-
-    public $edu_type = ['form_education_high','form_education_incom_high','form_education_prof','form_education_base'];
-    public $family_status = ['form_family_status_marryed' , 'form_family_status_free', 'form_family_status_search'];
-    
-    // Переменные соостветствующие полям в бд в таблице users
-    public $user_id,
-            $user_email,
-            $user_password,
-            $user_hash,
-            $user_status,
-            $user_name,
-            $user_images,
-            $user_patronymic,
-            $user_surname,
-            $user_birthday,
-            $user_location,
-            $user_family_status,
-            $user_education,
-            $user_experience,
-            $user_phone,
-            $user_skype,
-            $user_additional;
-    
-    public function __construct($data = ''){
         
-        $this->user_id = (isset($data['user_id'])) ? $data['user_id'] : "";
-        $this->user_email = (isset($data['user_email'])) ? $data['user_email'] : "";
-        $this->user_password = (isset($data['user_password'])) ? $data['user_password'] : "";
-        $this->user_hash = (isset($data['user_hash'])) ? $data['user_hash'] : "";
-        $this->user_status = (isset($data['user_status'])) ? $data['user_status'] : "";
-        $this->user_name = (isset($data['user_name'])) ? $data['user_name'] : "";
-        $this->user_images = (isset($data['user_images'])) ? $data['user_images'] : "";
-        $this->user_patronymic = (isset($data['user_patronymic'])) ? $data['user_patronymic'] : "";
-        $this->user_surname = (isset($data['user_surname'])) ? $data['user_surname'] : "";
-        $this->user_birthday = (isset($data['user_birthday'])) ? $data['user_birthday'] : "";
-        $this->user_location = (isset($data['user_location'])) ? $data['user_location'] : "";
-        $this->user_family_status = (isset($data['user_family_status'])) ? $data['user_family_status'] : "";
-        $this->user_education = (isset($data['user_education'])) ? $data['user_education'] : "";
-        $this->user_experience = (isset($data['user_experience'])) ? $data['user_experience'] : "";
-        $this->user_phone = (isset($data['user_phone'])) ? $data['user_phone'] : "";
-        $this->user_skype = (isset($data['user_skype'])) ? $data['user_skype'] : "";
-        $this->user_additional = (isset($data['user_additional'])) ? $data['user_additional'] : "";
-    } 
-    
-    public function getUser($user_id = ''){
-        /*
-         * Если в функцию не передан id, значит получаем id
-         * из текущей сессии и возвращаем пользователя
-         */
+    public function getUser(){
         if(!$user_id){
             $user_id = $_SESSION['user_id'];
         }

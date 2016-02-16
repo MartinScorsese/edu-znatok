@@ -13,11 +13,9 @@ class UsersController
         }
         
         $user = Users::getUser();
-        $lang = Index::getLangArr();
         
         $view = new View();
         $view->user = $user;
-        $view->lang = $lang;
         
         $view->display('header.php');
         $view->display('users/profile.php');
