@@ -3,6 +3,8 @@ RewriteEngine On
 Options +FollowSymlinks
 RewriteBase /
 
+#RewriteRule ^([a-zA-Z]+)\/([a-zA-Z]+)$ index.php?ctrl=$1&act=&2 [QSA]
+
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^.*$ index.php [NC,L]
