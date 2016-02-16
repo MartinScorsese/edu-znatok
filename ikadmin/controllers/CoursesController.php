@@ -65,25 +65,14 @@ class CoursesController
     public function actionSave(){
         $data_array = $_POST;
         if(!empty($data_array)){
-            if(!empty($data_array['id'])){
-                $course = Courses::findOneByPK($data_array['id']);
-                foreach ($data_array as $key => $value){
-                    $course->$key = $value;
-                }
-                if (!empty($_FILES)){
-                    $course->img = Files::upload($_FILES, 'courses');
-                }
-                $course->update();
-            }else{
-                $course = new Courses();
-                foreach ($data_array as $key => $value){
-                    $course->$key = $value;
-                }
-                if (!empty($_FILES)){
-                    $course->img = Files::upload($_FILES, 'courses');
-                }
-                $course->insert();    
-            }    
+            $course = new Courses();
+            foreach ($data_array as $key => $value){
+                $course->$key = $value;
+            }
+            if (!empty($_FILES)){
+                $course->img = Files::upload($_FILES, 'courses');
+            }
+            $course->save();
         }else{
             header('Location: ' . ADMIN_PATH);
         }

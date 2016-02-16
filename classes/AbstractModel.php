@@ -61,7 +61,7 @@ abstract class AbstractModel {
         return $res[0];
     }
     
-    public function insert(){
+    private function insert(){
         $cols = array_keys($this->data);
         $data = [];
         foreach ($cols as $col) {
@@ -78,7 +78,7 @@ abstract class AbstractModel {
         $this->id = $db->insert($query, $data);
     }
     
-    public function update(){
+    private function update(){
         $cols = [];
         $data =[];
         foreach ($this->data as $k => $v){
@@ -93,6 +93,14 @@ abstract class AbstractModel {
                 . "WHERE id=:id";
         $db = New DB();
         $db->query($query, $data);
+    }
+    
+    public function save(){
+        if (isset($this->id)){
+            $this->update();
+        }else{
+            $this->insert();
+        }
     }
     
     public function delete(){

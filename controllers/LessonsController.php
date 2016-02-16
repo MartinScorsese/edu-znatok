@@ -11,7 +11,7 @@ class LessonsController
         
         if(isset($course_id)){
             
-            $lessons = Lessons::findOneByColumn('parent_id', $course_id);
+            $lessons = Lessons::findAllByColumn('parent_id', $course_id);
             $course = Courses::findOneByPK($course_id);
             
             $view->lessons = $lessons;

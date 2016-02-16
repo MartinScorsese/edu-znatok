@@ -5,11 +5,11 @@ class IndexController
         
         $view = new View();
 
-      //  $view->user_login = $user->user_login;
-       // $view->user_group = $user->user_group;
+        $lessons = Lessons::findAll();
+        $view->lessons = $lessons;
 
         $view->display('admin/header.php');
-        $view->display('admin/content.php');
+        $view->display('admin/lessons/list.php');
         $view->display('admin/footer.php');
 
     }

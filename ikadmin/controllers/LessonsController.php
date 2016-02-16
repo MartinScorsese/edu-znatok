@@ -3,27 +3,14 @@ class LessonsController
 {
     public function actionShow(){ 
         
-        $course_id = $_GET['course_id'];
         $view = new View();
-        
-      //  $view->user_login = $user->user_login;
-       // $view->user_group = $user->user_group;
-        
-        if(isset($course_id)){
-            
-            $lessons = Lessons::findOneByColumn('parent_id', $course_id);
-            $course = Courses::findOneByPK($course_id);
-            
-            $view->lessons = $lessons;
-            $view->page_title = $course->name;
-            
-            $view->display('header.php');
-            $view->display('lessons/list.php');
-            $view->display('footer.php');
-        }else{
-            header("HTTP/1.1 404 Not Found");
-            $view->display('errors/404.php');
-        }
+
+        $lessons = Lessons::findAll();
+        $view->lessons = $lessons;
+
+        $view->display('admin/header.php');
+        $view->display('admin/lessons/list.php');
+        $view->display('admin/footer.php');
 
     }
     
