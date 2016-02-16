@@ -32,10 +32,6 @@ abstract class AbstractModel {
         $db->setClassName($class);
         $query = "SELECT * FROM " . static::$table . " WHERE " . $column . "=:value";
         $res = $db->query($query, [':value' => $value]);
-        if (empty($res)){
-            $e = new ModelException('По вашему запросу ничего не найдено');
-            throw $e;
-        }
         return $res;
     }
     
