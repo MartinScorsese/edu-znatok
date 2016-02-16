@@ -11,8 +11,7 @@ $ctrl = !empty($path_parts[1]) ?  ucfirst($path_parts[1]) : 'Index';
 $act = !empty($path_parts[2]) ?  ucfirst($path_parts[2]) : 'Show';
 $controllerClassName = $ctrl . 'Controller';
 
-try{
-    
+try{    
     $controller = new $controllerClassName;
     $method = 'action' . $act;
     if(method_exists($controller, $method)){

@@ -1,7 +1,7 @@
 		<?php foreach ($this->courses as $course):?>   
                         <div class="course">
                             <div class="course-logo">
-                                <a href="courses.html"><img src="<?php echo $course->course_img; ?>"></a>
+                                <a href="courses.html"><img src="<?=BASE_PATH?><?php echo $course->course_img; ?>"></a>
                             </div>
                             <div class="course-name">
                                 <h2><?php echo $course->course_name ?></h2>

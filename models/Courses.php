@@ -1,5 +1,4 @@
 <?php
-
 /**
  * class Courses
  * @property $id
