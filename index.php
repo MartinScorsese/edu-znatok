@@ -4,9 +4,11 @@ define('BASE_PATH', '/');
 session_start();
 require_once __DIR__.'/autoload.php';
 
+$path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+$path_parts = explode('/', $path);
 
-$ctrl = isset($_GET['ctrl']) ? ucfirst($_GET['ctrl']) : 'Index';
-$act = isset($_GET['act']) ? ucfirst($_GET['act']) : 'Show';
+$ctrl = !empty($path_parts[1]) ?  ucfirst($path_parts[1]) : 'Index';
+$act = !empty($path_parts[2]) ?  ucfirst($path_parts[2]) : 'Show';
 $controllerClassName = $ctrl . 'Controller';
 
 try{

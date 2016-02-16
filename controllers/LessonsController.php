@@ -39,8 +39,7 @@ class LessonsController
             $view->display('lessons/lesson.php');
             $view->display('footer.php');
         }else{
-            header("HTTP/1.1 404 Not Found");
-            $view->display('errors/404.php');
+            throw new ControllerException('Сожалеем, такого урока не существует', '404');
         }
 
     }
