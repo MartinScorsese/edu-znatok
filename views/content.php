@@ -1,4 +1,4 @@
-		<?php foreach ($this->courses as $course):?>   
+		<?php foreach ($courses as $course):?>   
                         <div class="course">
                             <div class="course-logo">
                                 <a href="<?=BASE_PATH ?>?ctrl=courses&id=<?php echo $course->id; ?>"><img src="<?=BASE_PATH ?><?php echo $course->img; ?>"></a>

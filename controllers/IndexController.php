@@ -16,9 +16,4 @@ class IndexController
 
     }
     
-    public function actionTest(){
-        $course = Courses::findOneByPK(11);
-        $course->delete();
-        var_dump($course);die;
-    }
 }

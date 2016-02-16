@@ -10,6 +10,17 @@ $act = isset($_GET['act']) ? ucfirst($_GET['act']) : 'Show';
 
 
 $controllerClassName = $ctrl . 'Controller';
-$controller = new $controllerClassName;
-$method = 'action' . $act;
-$controller->$method();
+
+try{
+    
+    $controller = new $controllerClassName;
+    $method = 'action' . $act;
+    $controller->$method();
+}catch (Exception $e) {
+    $view = new View();
+    $view->error = $e->getMessage();
+    
+    $view->display('header.php');
+    $view->display('errors/errors.php');
+    $view->display('footer.php');
+}
