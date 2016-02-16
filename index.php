@@ -13,7 +13,11 @@ try{
     
     $controller = new $controllerClassName;
     $method = 'action' . $act;
-    $controller->$method();
+    if(method_exists($controller, $method)){
+        $controller->$method();
+    }else{
+        throw new ControllerException('Метода <b>' . $method . '</b> в контроллере <b>' . $controllerClassName . '</b> не существует', '404');
+    }  
 }catch (Exception $e) {
     
     $view = new View();

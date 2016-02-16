@@ -21,8 +21,7 @@ class LessonsController
             $view->display('lessons/list.php');
             $view->display('footer.php');
         }else{
-            header("HTTP/1.1 404 Not Found");
-            $view->display('errors/404.php');
+            throw new ControllerException('Невозможно отобразить список уроков для данного курса', '404');
         }
 
     }
