@@ -39,7 +39,7 @@
                                 <?php endif; ?>
                                  >
                                 <ul>
-                                    <li><a href="#">Пункт 1</a></li>
+                                    <li><a href="<?=BASE_PATH?>auth/">Войти</a></li>
                                     <li><a href="#">Пункт 2</a></li>
                                     <li><a href="#">Пункт 3</a></li>
                                     <li><a href="#">Пункт 4</a></li>

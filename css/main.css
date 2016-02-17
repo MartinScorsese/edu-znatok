@@ -355,3 +355,253 @@ a:hover {
 	list-style-type: decimal;
 	margin-bottom: 35px;
 }
+
+/* Стили для форм регистрации и авторизации */
+#register-form h2, #register-form label, #auth-form h2, #auth-form label {
+    font-family:Georgia, Times, "Times New Roman", serif;
+}
+.form_hint, .required_notification {
+    font-size: 11px;
+}
+
+#register-form h2 {
+    margin:0;
+    display: inline;
+}
+.required_notification {
+    color:#d45252;
+    margin:5px 0 0 0;
+    display:inline;
+    float:right;
+}
+
+#register-form ul {
+    width:960px;
+    list-style-type:none;
+    list-style-position:outside;
+    margin:0px auto;
+    padding:0px;
+}
+#register-form li{
+    padding:12px;
+    border-bottom:1px solid #eee;
+    position:relative;
+}
+#register-form li:first-child, #register-form li:last-child {
+    border-bottom:1px solid #777;
+}
+#register-form label {
+    width:150px;
+    margin-top: 3px;
+    display:inline-block;
+    float:left;
+    padding:3px;
+}
+#register-form input {
+    height:20px;
+    width:220px;
+    padding:5px 8px;
+}
+#register-form textarea {padding:8px; width:300px;}
+#register-form .btn-submit {margin-left:156px;}
+
+#register-form input, #register-form textarea {
+    border:1px solid #aaa;
+    box-shadow: 0px 0px 3px #ccc, 0 10px 15px #eee inset;
+    border-radius:2px;
+}
+#register-form input:focus, #register-form textarea:focus {
+    background: #fff;
+    border:1px solid #555;
+    box-shadow: 0 0 3px #aaa;
+}
+/* Button Style */
+button.btn-submit {
+    background-color: #68b12f;
+    background: -webkit-gradient(linear, left top, left bottom, from(#68b12f), to(#50911e));
+    background: -webkit-linear-gradient(top, #68b12f, #50911e);
+    background: -moz-linear-gradient(top, #68b12f, #50911e);
+    background: -ms-linear-gradient(top, #68b12f, #50911e);
+    background: -o-linear-gradient(top, #68b12f, #50911e);
+    background: linear-gradient(top, #68b12f, #50911e);
+    border: 1px solid #509111;
+    border-bottom: 1px solid #5b992b;
+    border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    -ms-border-radius: 3px;
+    -o-border-radius: 3px;
+    box-shadow: inset 0 1px 0 0 #9fd574;
+    -webkit-box-shadow: 0 1px 0 0 #9fd574 inset ;
+    -moz-box-shadow: 0 1px 0 0 #9fd574 inset;
+    -ms-box-shadow: 0 1px 0 0 #9fd574 inset;
+    -o-box-shadow: 0 1px 0 0 #9fd574 inset;
+    color: white;
+    font-weight: bold;
+    padding: 6px 20px;
+    text-align: center;
+    text-shadow: 0 -1px 0 #396715;
+}
+button.btn-submit:hover {
+    opacity:.85;
+    cursor: pointer;
+}
+button.btn-submit:active {
+    border: 1px solid #20911e;
+    box-shadow: 0 0 10px 5px #356b0b inset;
+    -webkit-box-shadow:0 0 10px 5px #356b0b inset ;
+    -moz-box-shadow: 0 0 10px 5px #356b0b inset;
+    -ms-box-shadow: 0 0 10px 5px #356b0b inset;
+    -o-box-shadow: 0 0 10px 5px #356b0b inset;
+}
+#register-form input:focus, #register-form textarea:focus { /* add this to the already existing style */
+    padding-right:70px;
+}
+#register-form input, #register-form textarea { /* add this to the already existing style */
+    -moz-transition: padding .25s;
+    -webkit-transition: padding .25s;
+    -o-transition: padding .25s;
+    transition: padding .25s;
+}
+#register-form input, #register-form textarea {
+    padding-right:30px;
+}
+input:required, textarea:required {
+    background: #fff url(images/red_asterisk.png) no-repeat 98% center;
+}
+::-webkit-validation-bubble-message {
+    padding: 1em;
+}
+
+#register-form .error:focus:invalid, #register-form .error { /* when a field is considered invalid by the browser */
+    background: #fff url(../images/invalid.png) no-repeat 98% center;
+    box-shadow: 0 0 5px #d45252;
+    border-color: #b03535
+}
+#register-form .success:required:valid { /* when a field is considered valid by the browser */
+    background: #fff url(../images/valid.png) no-repeat 98% center;
+    box-shadow: 0 0 5px #5cd053;
+    border-color: #28921f;
+}
+
+#register-form input:focus + .form_hint {display: inline;}
+#register-form input:required:valid + .form_hint {background: #28921f;} /* change form hint color when valid */
+#register-form input:required:valid + .form_hint::before {color:#28921f;} /* change form hint arrow color when valid */
+
+
+#auth-form ul{
+    width:650px;
+    list-style-type:none;
+    list-style-position:outside;
+    margin:0px auto;
+    padding:0px;
+}
+#auth-form li{
+    padding:12px;
+    border-bottom:1px solid #eee;
+    position:relative;
+}
+#auth-form li:first-child, #auth-form li:last-child {
+    border-bottom:1px solid #777;
+}
+#auth-form label {
+    width:150px;
+    margin-top: 3px;
+    display:inline-block;
+    float:left;
+    padding:3px;
+}
+#auth-form input {
+    height:20px;
+    width:220px;
+    padding:5px 8px;
+}
+#auth-form #chbx {
+    width:20px;
+}
+
+#language_form ul{
+    width: 150px;
+    list-style-type:none;
+    list-style-position:outside;
+    margin:0px auto;
+    padding:0px;
+}
+#language_form li {
+    display: inline-block;
+    margin: 0 auto;
+}
+.clear {
+    clear: both;
+}
+
+/*
+* Стили для профиля
+*/
+#profile {
+    margin: 10px auto;
+    position: relative;
+    overflow: hidden;
+}
+#user_name {
+    border-bottom: 1px solid #45729f;
+}
+
+#user_name h2{
+    text-align: left;
+    color: #45729f;
+}
+#profile #wrap {
+    
+    margin: 5px auto;
+    padding-left: 30px;
+    padding-right: 30px;
+    overflow: hidden;
+}
+#left {
+    position: relative;
+    display: block;
+    float: left;
+    width: 280px;
+    padding-left: 10px
+}
+#left img {
+    width: 270px;
+    margin: 0 auto;
+}
+#right {
+    position: relative;
+    display: block;
+    float: left;
+    width: 600px;
+    padding-right: 10px 
+}
+#profile ul {
+    width: 590px;
+    list-style-type:none;
+    list-style-position:outside;
+    margin:0px auto;
+    padding:0px;
+}
+#profile li {
+    border-bottom: 1px solid #bebebe;
+    min-height: 30px;
+}
+#profile li:hover {
+    background-color: #b1d0ff;
+}
+.intro {
+    font-size: 0.8em;
+    color: #555;
+    display: inline-block;
+    line-height: 30px;
+    width: 135px;
+    vertical-align: top;
+}
+.cont {
+    color: #212121;
+    display: inline-block;
+    width: 450px;
+    line-height: 30px;
+    margin-left: 5px;
+}
