@@ -39,13 +39,20 @@
                                 <?php endif; ?>
                                  >
                                 <ul>
-                                    <li><a href="<?=BASE_PATH?>auth/">Войти</a></li>
+                                    <li>
+                                        <?php if(!$user): ?>
+                                            <a href="<?=BASE_PATH?>auth/">Войти</a>
+                                        <?php else: ?>
+                                            <img src ="<?=BASE_PATH?><?=$user->img?>" width="35px"><br />
+                                            <a href="<?=BASE_PATH?>users/">Профиль</a> | <a href="<?=BASE_PATH?>auth/logout/">Выйти</a>
+                                        <?php endif; ?>
+                                    </li>
+                                    <li><hr /></li>
                                     <li><a href="#">Пункт 2</a></li>
                                     <li><a href="#">Пункт 3</a></li>
                                     <li><a href="#">Пункт 4</a></li>
                                     <li><a href="#">Пункт 5</a></li>
                                     <li><a href="#">Пункт 6</a></li>
-                                    <li><a href="#">Пункт 7</a></li>
                                     
                                 </ul>
                             </div>

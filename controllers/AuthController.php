@@ -40,9 +40,11 @@ class AuthController
                         Auth::setAuthCookie($user->id, $hash);
                     }
                 }
+            }else{
+                $_SESSION['login_error'] = 'Ошибка авторизации';
             }
         }
-        header("Location: " . BASE_PATH);
+        header("Location: " . BASE_PATH . 'auth/');
     }
     
     /*
@@ -59,6 +61,17 @@ class AuthController
      */
     public function actionRegister(){
         
+        $auth = Auth::checkAuth();
+        
+        if(!$auth){
+           $view = new View();
+           
+           $view->display('header.php');
+           $view->display('auth/register.php');
+           $view->display('footer.php');
+        }else{
+            header("Location: " . BASE_PATH . 'users/');
+        }
     }
     
     public function actionSave(){
@@ -66,20 +79,24 @@ class AuthController
          * Валидация данных
          */
         $data_array = $_POST;
-        
         /*
          * Заполнение свойств пользователя
          */
         if(!empty($data_array)){
-            $user = new Users();
-            foreach ($data_array as $key => $value){
-                $user->$key = $value;
+            $data_array = Auth::verifyData($data_array, 'reg');
+            if (!$data_array){
+                header('Location: ' . BASE_PATH . 'auth/register/');
             }
+            $user = new Users();
+            $user->email = $data_array['email'];
+            $user->password = md5(md5($data_array['password']));
             $user->save();
+            $user = Users::findOneByColumn('email', $data_array['email']);
+            $user->setProfile();
         }else{
             header('Location: ' . BASE_PATH);
         }
-        header('Location: ' . BASE_PATH);
+        header('Location: ' . BASE_PATH . 'auth/');
     }
     
     /*

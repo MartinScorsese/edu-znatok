@@ -5,7 +5,7 @@ class Files
     {
         $file;
         $cat;
-        $file_pref = Users::generateCode();
+        $file_pref = Helper::generateCode();
         $uploaddir = __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'img' . DIRECTORY_SEPARATOR . $cat . DIRECTORY_SEPARATOR;
         if(is_uploaded_file($file['img']['tmp_name'])){
             $new_file_name = explode('.', $file['img']['name']);

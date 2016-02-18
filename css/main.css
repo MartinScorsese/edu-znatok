@@ -357,6 +357,7 @@ a:hover {
 }
 
 /* Стили для форм регистрации и авторизации */
+
 #register-form h2, #register-form label, #auth-form h2, #auth-form label {
     font-family:Georgia, Times, "Times New Roman", serif;
 }
@@ -376,7 +377,6 @@ a:hover {
 }
 
 #register-form ul {
-    width:960px;
     list-style-type:none;
     list-style-position:outside;
     margin:0px auto;
@@ -562,22 +562,21 @@ input:required, textarea:required {
     position: relative;
     display: block;
     float: left;
-    width: 280px;
+    width: 180px;
     padding-left: 10px
 }
 #left img {
-    width: 270px;
+    width: 170px;
     margin: 0 auto;
 }
 #right {
     position: relative;
     display: block;
     float: left;
-    width: 600px;
+    width: 515px;
     padding-right: 10px 
 }
 #profile ul {
-    width: 590px;
     list-style-type:none;
     list-style-position:outside;
     margin:0px auto;
@@ -595,13 +594,13 @@ input:required, textarea:required {
     color: #555;
     display: inline-block;
     line-height: 30px;
-    width: 135px;
+    width: 100px;
     vertical-align: top;
 }
 .cont {
     color: #212121;
     display: inline-block;
-    width: 450px;
+    width: 400px;
     line-height: 30px;
     margin-left: 5px;
 }

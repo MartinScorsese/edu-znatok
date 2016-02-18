@@ -84,4 +84,66 @@ class Auth extends AbstractModel {
         $db->query($query, $params);
     }
     
+    /*
+     * Метод проверки входных данных
+     * Функция принимает массив данных и необязательный параметр
+     * type - для проверки источника запроса и выбора алгоритма.
+     * reg - все данные формы регистрации, после срабатывания события submit
+     * form_validate - ajax запрос при вводе e-mail в форме регистрации
+     */
+    public function verifyData($data, $type = 'form_validate'){
+        if ('form_validate' == $type){
+            if (isset($data['user_email'])){
+                $db = new DB;
+                $user_id = $db->query("SELECT id FROM " . self::$users_table . " WHERE email=:email", ['email' => $data['email']]);
+
+                if($user_id){
+                    return $data = [
+                                'status' => 'error',
+                                'msg' => 'Такой e-mail уже зарегистрирован',
+                                ];
+                }else{
+                    return $data = [
+                                'status' => 'success',
+                                'msg' => '',
+                                ];
+                }       
+            }
+        }else if ('reg' == $type){
+            /*
+             * Проверка обязательных входных данных из формы регистрации
+             * 
+             */
+            $errors = 0;
+            
+            $db = new DB;
+            $user_id = $db->query("SELECT id FROM " . self::$users_table . " WHERE email=:email", ['email' => $data['email']]);
+            if ($user_id) {
+                $_SESSION['email_error'] = 'E-mail: <b>' . $data['email'] . '</b> уже зарегистрирован';
+                $errors++;
+            }
+            
+            if (!preg_match('/^([a-z0-9_\.-])+@[a-z0-9-]+\.([a-z]{2,4}\.)?[a-z]{2,4}$/i', $data['email'])){
+                $_SESSION['email_error'] = 'E-mail введен не корректно. Пример: info@ik-edu.ru';
+                $errors++;
+            }
+            if ($data['password'] !== $data['check_password']){
+                $_SESSION['pass_error'] = 'Введенные пароли не совпадают';
+                $errors++;
+            }
+            if (empty($data['password']) || empty($data['check_password'])){
+                $_SESSION['pass_empty_error'] = 'Поле "Пароль" не может быть пустым';
+                $errors++;
+            }   
+            
+            if ($errors != '0'){
+                return false;
+            }
+            
+            return $data;
+            
+        }
+        
+    }
+    
 }

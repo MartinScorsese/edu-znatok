@@ -24,4 +24,18 @@ class Helper
         return $hash;
     }
     
+    public function getAge($birthday){
+        
+        if ($birthday == '0000-00-00') {
+            return '';
+        }
+        $date = new DateTime($birthday);
+        $now = new DateTime();
+        $interval = $now->diff($date);
+        
+        return $interval->y;
+    }
+    
+    
+    
 }

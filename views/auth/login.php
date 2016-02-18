@@ -3,9 +3,14 @@
         <ul>
             <li><h2>Вход</h2></li>
             <li>
-                <label for="email">email</label>
+                <label for="email">E-mail</label>
                 <input type="email" name="email" value="">
-                <span class="mesages"></span>
+                <span class="mesages">
+                    <?php if(!empty($_SESSION['login_error'])):?>
+                        <?=$_SESSION['login_error']?>
+                        <?php unset($_SESSION['login_error']);?>
+                    <?php endif;?>
+                </span>
             </li>
             <li>
                 <label for="password">Пароль</label>

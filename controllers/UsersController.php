@@ -23,6 +23,26 @@ class UsersController
         $view->display('footer.php');
         
     }
+    
+    /*
+     * Редактирование профиля
+     */
+    
+    public function actionEdit(){
+        $auth = Auth::checkAuth();
+        if (!$auth){
+            header("Location: " . BASE_PATH . 'auth/');
+        }
+        $user = Users::findOneByPK($auth);
+        $user->getProfile();
+        
+        $view = new View();
+        $view->user = $user;
+        
+        $view->display('header.php');
+        $view->display('users/edit_profile.php');
+        $view->display('footer.php');
+    }
         
     /*
      * Сохранение пользователя
@@ -30,17 +50,21 @@ class UsersController
     public function actionSave(){
         $data_array = $_POST;
         if(!empty($data_array)){
-            $course = new Courses();
+            $user = Users::findOneByPK(Auth::checkAuth());
+            $user->getProfile();
+            
             foreach ($data_array as $key => $value){
-                $course->$key = $value;
+                $user->$key = $value;
             }
-            if (!empty($_FILES)){
-                $course->img = Files::upload($_FILES, 'courses');
+            if (!empty($_FILES['img']['name'])){
+                $user->img = Files::upload($_FILES, 'users');
+            }else{
+                $user->img = 'img/defaults/owl00' . rand(1, 6) . '.png';
             }
-            $course->save();
+            $user->saveProfile();
         }else{
-            header('Location: ' . ADMIN_PATH);
+            header('Location: ' . BASE_PATH . 'auth/');
         }
-        header('Location: ' . ADMIN_PATH . '?ctrl=courses&act=edit&id=' . $course->id);
+        header('Location: ' . BASE_PATH . 'users/');
     }
 }
