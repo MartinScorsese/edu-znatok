@@ -3,16 +3,38 @@
 class Breadcrumbs 
 {
     
-    public $data = [];
-    
-    public function getCrumbs($item, $type = 'course')
+       
+    public function getCrumbs($item)
     {
-        if($type = 'course'){
-            
-        }
-                
-        return data;
+        $paths = [
+            'courses/?id=', 
+            'lessons/show/?course_id=', 
+            'lessons/lesson/?lesson_id='
+        ];
         
+        $crumbs[] = $item;
+            if($item->parent_id){
+                do{
+                    $item = Courses::findOneByColumn('id', $item->parent_id);
+                    $crumbs[] = $item;
+
+                }while($item->parent_id); 
+            }
+        $crumbs = array_reverse($crumbs);
+        
+        $count = count($crumbs);
+        
+        $breadcrumbs = [];
+        for ($i = 0; $i < $count; $i++){
+            
+            if(isset($crumbs[$i]->id)){
+                $paths[$i] = $paths[$i] . $crumbs[$i]->id;
+                $breadcrumbs[$i]['name'] = $crumbs[$i]->name;
+            }
+            $breadcrumbs[$i]['path'] = $paths[$i];   
+        }
+        
+        return $breadcrumbs;
     }
     
 }

@@ -11,7 +11,6 @@ class CoursesController
             $user->getProfile();
         }
         
-        
         $courses = Courses::findAllByColumn('parent_id', $id);
         $view = new View();
         $view->user = $user; 
@@ -19,6 +18,10 @@ class CoursesController
       //  $view->user_login = $user->user_login;
        // $view->user_group = $user->user_group;
         $parent_course = Courses::findOneByPK($id);
+        
+        $crumbs = Breadcrumbs::getCrumbs($parent_course);
+        
+        $view->crumbs = $crumbs;
         $view->page_title = $parent_course->name;
         
         $view->display('header.php');

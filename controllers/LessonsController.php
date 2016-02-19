@@ -20,6 +20,9 @@ class LessonsController
             $lessons = Lessons::findAllByColumn('parent_id', $course_id);
             $course = Courses::findOneByPK($course_id);
             
+            $crumbs = Breadcrumbs::getCrumbs($course);
+        
+            $view->crumbs = $crumbs;
             $view->user = $user;
             $view->lessons = $lessons;
             $view->page_title = $course->name;
@@ -48,6 +51,11 @@ class LessonsController
        // $view->user_group = $user->user_group;
         
         if(isset($lesson_id)){
+            $lesson = Lessons::findOneByPK($lesson_id);
+            $crumbs = Breadcrumbs::getCrumbs($lesson);
+            
+            $view->page_title = $lesson->name;
+            $view->crumbs = $crumbs;
             $view->user = $user;
             $view->display('header.php');
             $view->display('lessons/lesson.php');
