@@ -27,39 +27,40 @@
                             </p></div>
                 </div>
             </div>
-            <input type="checkbox" id="hmt" class="hidden-menu-ticker">
-<label class="btn-menu" for="hmt">
-  <span class="first"></span>
-  <span class="second"></span>
-  <span class="third"></span>
-</label>
-<ul class="hidden-menu">
-	<aside class="left">
-		<div class="absolute">
-		<div id="fixed">
-	 	<div id="miProfile">
-	 		<?php if(!$user): ?>
-	    	<a href="<?=BASE_PATH?>auth/">Войти</a>
-	        <?php else: ?>
-                        <img src ="<?=BASE_PATH?><?=$user->img?>" width="35px"><br />
-                        <a href="<?=BASE_PATH?>users/">Профиль</a> | <a href="<?=BASE_PATH?>auth/logout/">Выйти</a>
-            <?php endif; ?>
-            <br><hr />
-	 </div>
-	 <nav class="LMenu">
-	 <a href="#" onClick="Page.Go(this.href); return false;">Пункт 2</a>
-	 <a href="#" onClick="Page.Go(this.href); return false;">Пункт 3</a>
-	 <a href="#" onClick="Page.Go(this.href); return false;">Пункт 4</a>
-	 <a href="#" onClick="Page.Go(this.href); return false;">Пункт 5</a>
-	 <a href="#" onClick="Page.Go(this.href); return false;">Пункт 6</a>
-	 <a href="#" onClick="Page.Go(this.href); return false;">Пункт 7</a>
-	 </nav>
-	</div>
-	 </div>
-	</aside>
-	</ul>
+            
             <div id="container-outer">
-                
+                <div id="sidebar" class="on" 
+                    <?php if(isset($_COOKIE['sidebar']) && 'off' == $_COOKIE['sidebar']):?>
+                     style="width: 0px;"
+                    <?php endif; ?>
+                     >
+                    <div id="menu">
+                        <div id="sidebar_toggle"></div>
+                        <div id="sidebar_inner"
+                            <?php if(isset($_COOKIE['sidebar']) && 'off' == $_COOKIE['sidebar']):?>
+                                style="margin-left: -200px;"
+                            <?php endif; ?>
+                             >
+                            <ul>
+                                <li>
+                                    <?php if(!$user): ?>
+                                        <a href="<?=BASE_PATH?>auth/">Войти</a>
+                                    <?php else: ?>
+                                        <img src ="<?=BASE_PATH?><?=$user->img?>" width="35px"><br />
+                                        <a href="<?=BASE_PATH?>users/">Профиль</a> | <a href="<?=BASE_PATH?>auth/logout/">Выйти</a>
+                                    <?php endif; ?>
+                                </li>
+                                <li><hr /></li>
+                                <li><a href="#">Пункт 2</a></li>
+                                <li><a href="#">Пункт 3</a></li>
+                                <li><a href="#">Пункт 4</a></li>
+                                <li><a href="#">Пункт 5</a></li>
+                                <li><a href="#">Пункт 6</a></li>
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
                 <div id="content">
                     <div class="articles">
                         <?php if($crumbs): ?>
